@@ -53,12 +53,12 @@ def g_translate_pdf(driver, path, input_lang_code, output_lang_code, filename):
 
     time.sleep(2)
 
-    with open(f"./tmp/{filename}_translated.html", "w") as f:
+    with open(f"{filename}_translated.html", "w") as f:
         f.write(driver.page_source)
         # f.write(driver.find_element_by_tag_name("body").get_attribute('innerHTML'))
 
     # return driver.page_source
-    return html_to_pdf(driver, f"./tmp/{filename}_translated.html")
+    return html_to_pdf(driver, f"{filename}_translated.html")
 
 
 UPLOAD_FOLDER = './uploads'
