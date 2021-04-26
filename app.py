@@ -8,10 +8,17 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.binary_location = os.getenv('GOOGLE_CHROME_PATH')
-driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=os.getenv('CHROMEDRIVER_PATH'))#executable_path="./chromedriver") #executable_path=os.getenv('CHROMEDRIVER_PATH'))
+driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=os.getenv('CHROMEDRIVER_PATH'))
+
+UPLOAD_FOLDER = './uploads'
+ALLOWED_EXTENSIONS = {'pdf', 'doc', 'docx', 'odf', 'ppt', 'pptx', 'ps', 'rtf', 'txt', 'xls', 'xlsx'}
+
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SECRET_KEY'] = "secret!"
 
 
-def html_to_pdf(driver, fp):
+def convert_html_to_pdf_and_get_download_url(driver, fp):
     driver.get("https://pdfcrowd.com/#convert_by_upload")
 
     time.sleep(1)
@@ -31,14 +38,13 @@ def html_to_pdf(driver, fp):
             href = ele.get_attribute("href")
             if href.strip() == "":
                 continue
-
+            os.remove(fp)
             return href
         except:
             pass
 
 
 def g_translate_pdf(driver, path, input_lang_code, output_lang_code, filename):
-
     driver.get(f"https://translate.google.com/?sl={input_lang_code}&tl={output_lang_code}&op=docs")
     time.sleep(1)
 
@@ -55,18 +61,9 @@ def g_translate_pdf(driver, path, input_lang_code, output_lang_code, filename):
 
     with open(f"{filename}_translated.html", "w") as f:
         f.write(driver.page_source)
-        # f.write(driver.find_element_by_tag_name("body").get_attribute('innerHTML'))
 
-    # return driver.page_source
-    return html_to_pdf(driver, f"{filename}_translated.html")
+    return convert_html_to_pdf_and_get_download_url(driver, f"{filename}_translated.html")
 
-
-UPLOAD_FOLDER = './uploads'
-ALLOWED_EXTENSIONS = {'pdf'}
-
-app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['SECRET_KEY'] = "secret!"
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -95,9 +92,6 @@ def upload_file_and_translate():
 
             return redirect(g_translate_pdf(driver, f"./uploads/{filename}", input_lang, output_lang, filename.split(".")[0]))
 
-            # return redirect(pdf_url)
-            # return redirect(url_for('upload_file',
-            #                         filename=filename))
     return render_template('index.html')
 
 

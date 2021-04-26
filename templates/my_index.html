@@ -2,14 +2,14 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Document Translator</title>
+  <title>Demo</title>
       <meta charset="utf-8">
-    <title>Document Translator</title>
+    <title>Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Codeply">
     <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" /><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'><link rel="stylesheet" href="./static/style.css">
-    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'><link rel="stylesheet" href="./static/style.css">
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
@@ -48,7 +48,7 @@
     <header id="first">
         <div class="header-content">
             <div class="inner">
-                <h1 class="cursive">Document Translator</h1>
+                <h1 class="cursive">Demo Application</h1>
                 <hr>
             </div>
         </div>
@@ -63,53 +63,57 @@
                     <h2 class="margin-top-0 text-primary">Introduction to the service</h2>
                     <br>
                     <p class="text-faded">
-                        A simple, fast and reliable document translator.                   
+                        BT                    
                     </p>
-                    <form action="/" method="POST" enctype=multipart/form-data>
-                        <p>From language</p>
-                        <div class="wrap">
 
-                        	<!-- <input type="text" name="inputLang" type="hidden"> -->
-                             <select class="custom-select" id="inputLang" name="inputLang" style="color: black; ">
-                                <option value="HI">HI</option>
-                                <option value="EN">EN</option>
-                                <option value="BN">BN</option>
-                                <option value="GU">GU</option>
-                                <option value="ML">ML</option>
-                                <option value="MR">MR</option>
-                                <option value="PA">PA</option>
-                                <option value="TA">TA</option>
-                                <option value="TE">TE</option>
-                            </select>
-                        </div>
-                        <p> To language</p>
-                        <div class="wrap">
-                            <select class="custom-select" id="outputLang" name="outputLang" style="color: black; ">
-                                <option value="EN">EN</option>
-                                <option value="HI">HI</option>
-                                <option value="BN">BN</option>
-                                <option value="GU">GU</option>
-                                <option value="ML">ML</option>
-                                <option value="MR">MR</option>
-                                <option value="PA">PA</option>
-                                <option value="TA">TA</option>
-                                <option value="TE">TE</option>
-                            </select>
-                        </div>
-                        <p>Extensions Supported</p>
-
-                        <p>pdf | doc | docx | odf | ppt | pptx | ps | rtf | txt | xls | xlsx</p>
-                        
-                        <div class="wrapper" id="file-uploads">
-                            <div class="file-upload">
-                              <input type="file" name="file">
-                              <i class="fa fa-arrow-up"></i>
-                            </div>
-                          </div>  
-                          <input type = "submit" value = "Translate" style="color: black; ">               
-                        </div>                               
-                    </form> 
                     <!-- To and From language -->
+
+                    <form action="/" method="POST" enctype=multipart/form-data>
+                    	<p>From language</p>
+	                    <div class="wrap">
+
+	                        <select class="custom-select">
+	                            <option value="HI" selected>HI</option>
+	                            <option value="EN">EN</option>
+	                            <option value="BN">BN</option>
+	                            <option value="GU">GU</option>
+	                            <option value="ML">ML</option>
+	                            <option value="MR">MR</option>
+	                            <option value="PA">PA</option>
+	                            <option value="TA">TA</option>
+	                            <option value="TE">TE</option>
+	                        </select>
+	                    </div>
+	                    <p> To language</p>
+	                    <div class="wrap">
+	                        <select class="custom-select">
+	                            <option value="EN" selected>EN</option>
+	                            <option value="HI">HI</option>
+	                            <option value="BN">BN</option>
+	                            <option value="GU">GU</option>
+	                            <option value="ML">ML</option>
+	                            <option value="MR">MR</option>
+	                            <option value="PA">PA</option>
+	                            <option value="TA">TA</option>
+	                            <option value="TE">TE</option>
+	                        </select>
+	                      
+	                      </div>
+
+	                    <!-- File Upload -->
+	                    <div class="wrapper" id="file-uploads">
+	                        <div class="file-upload">
+	                          <input type=file name=file>
+	                          <i class="fa fa-arrow-up"></i>
+	                        </div>
+	                      </div>               
+	                    </div>
+
+	                    <div class="wrapper">
+	                    	 <input type=submit value=Upload>
+	                    </div>
+             
+                    </form>
                     
             </div>
         </div>
@@ -123,25 +127,47 @@
                 <div class="media wow fadeInRight">
                     <h3>Simple</h3>
                     <div class="media-body media-middle">
-                        <p>What could be easier? </p>
+                        <p>What could be easier? Get started fast with this landing page starter theme.</p>
                     </div>
                     <div class="media-right">
                         <i class="icon-lg ion-ios-bolt-outline"></i>
                     </div>
                 </div>
+                <hr>
+                <div class="media wow fadeIn">
+                    <h3>Free</h3>
+                    <div class="media-left">
+                        <a href="#alertModal" data-toggle="modal" data-target="#alertModal"><i class="icon-lg ion-ios-cloud-download-outline"></i></a>
+                    </div>
+                    <div class="media-body media-middle">
+                        <p>Yes, please. Grab it for yourself, and make something awesome with this.</p>
+                    </div>
+                </div>
+                <hr>
                 <div class="media wow fadeInRight">
                     <h3>Unique</h3>
                     <div class="media-body media-middle">
-                        <p>An unique solution to the problem statement.</p>
+                        <p>Because you don't want your Bootstrap site, to look like a Bootstrap site.</p>
                     </div>
                     <div class="media-right">
                         <i class="icon-lg ion-ios-snowy"></i>
                     </div>
                 </div>
+                <hr>
+                <div class="media wow fadeIn">
+                    <h3>Popular</h3>
+                    <div class="media-left">
+                        <i class="icon-lg ion-ios-heart-outline"></i>
+                    </div>
+                    <div class="media-body media-middle">
+                        <p>There's good reason why Bootstrap is the most used frontend framework in the world.</p>
+                    </div>
+                </div>
+                <hr>
                 <div class="media wow fadeInRight">
                     <h3>Tested</h3>
                     <div class="media-body media-middle">
-                        <p>Tested for converting the document language and downloading the PDF report</p>
+                        <p>Bootstrap is matured and well-tested. It's a stable codebase that provides consistency.</p>
                     </div>
                     <div class="media-right">
                         <i class="icon-lg ion-ios-flask-outline"></i>
